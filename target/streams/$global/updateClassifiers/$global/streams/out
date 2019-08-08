@@ -1,5 +1,5 @@
 [debug] :: resolving dependencies :: default#goodla-ds$sources;0.1
-[debug] 	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool]
+[debug] 	confs: [compile, runtime, test, provided, optional, universal, universal-docs, universal-src, windows, docker, linux, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool]
 [debug] 	validate = true
 [debug] 	refresh = false
 [debug] resolving dependencies for configuration 'compile'
@@ -343,6 +343,24 @@
 [debug] == resolving dependencies for default#goodla-ds$sources;0.1 [provided]
 [debug] resolving dependencies for configuration 'optional'
 [debug] == resolving dependencies for default#goodla-ds$sources;0.1 [optional]
+[debug] resolving dependencies for configuration 'universal'
+[debug] == resolving dependencies for default#goodla-ds$sources;0.1 [universal]
+[debug] resolving dependencies for configuration 'universal-docs'
+[debug] == resolving dependencies for default#goodla-ds$sources;0.1 [universal-docs]
+[debug] resolving dependencies for configuration 'universal-src'
+[debug] == resolving dependencies for default#goodla-ds$sources;0.1 [universal-src]
+[debug] resolving dependencies for configuration 'windows'
+[debug] == resolving dependencies for default#goodla-ds$sources;0.1 [windows]
+[debug] resolving dependencies for configuration 'docker'
+[debug] == resolving dependencies for default#goodla-ds$sources;0.1 [docker]
+[debug] resolving dependencies for configuration 'linux'
+[debug] == resolving dependencies for default#goodla-ds$sources;0.1 [linux]
+[debug] resolving dependencies for configuration 'rpm'
+[debug] == resolving dependencies for default#goodla-ds$sources;0.1 [rpm]
+[debug] == resolving dependencies for default#goodla-ds$sources;0.1 [linux]
+[debug] resolving dependencies for configuration 'debian'
+[debug] == resolving dependencies for default#goodla-ds$sources;0.1 [debian]
+[debug] == resolving dependencies for default#goodla-ds$sources;0.1 [linux]
 [debug] resolving dependencies for configuration 'compile-internal'
 [debug] == resolving dependencies for default#goodla-ds$sources;0.1 [compile-internal]
 [debug] == resolving dependencies for default#goodla-ds$sources;0.1 [compile]
@@ -904,122 +922,34 @@
 [debug] == resolving dependencies default#goodla-ds$sources;0.1->jline#jline;2.12.1 [scala-tool->master]
 [debug] 	resolved ivy file produced in cache
 [debug] :: downloading artifacts ::
-[debug] 	[NOT REQUIRED] com.hazelcast#hazelcast-scala_2.11;3.7.2!hazelcast-scala_2.11.jar(src)
 [debug] 	[NOT REQUIRED] com.hazelcast#hazelcast;3.7.2!hazelcast.jar(src)
-[debug] 	[NOT REQUIRED] javax.cache#cache-api;1.0.0!cache-api.jar(src)
-[debug] 	[NOT REQUIRED] org.scala-lang#scala-compiler;2.11.7!scala-compiler.jar(src)
-[debug] 	[NOT REQUIRED] javax.transaction#transaction-api;1.1!transaction-api.jar(src)
+[debug] 	[NOT REQUIRED] com.hazelcast#hazelcast-scala_2.11;3.7.2!hazelcast-scala_2.11.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-lang#scala-library;2.11.7!scala-library.jar(src)
-[debug] no default ivy user dir defined: set to /Users/sandeepkunichi/.ivy2
-[debug] no default ivy user dir defined: set to /Users/sandeepkunichi/.ivy2
-[debug] no default ivy user dir defined: set to /Users/sandeepkunichi/.ivy2
-[debug] no default ivy user dir defined: set to /Users/sandeepkunichi/.ivy2
-[debug] no default ivy user dir defined: set to /Users/sandeepkunichi/.ivy2
-[debug] no default ivy user dir defined: set to /Users/sandeepkunichi/.ivy2
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-public.xml
-[debug] no default cache defined: set to /Users/sandeepkunichi/.ivy2/cache
-[debug] no default cache defined: set to /Users/sandeepkunichi/.ivy2/cache
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] no default cache defined: set to /Users/sandeepkunichi/.ivy2/cache
-[debug] no default cache defined: set to /Users/sandeepkunichi/.ivy2/cache
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] no default cache defined: set to /Users/sandeepkunichi/.ivy2/cache
-[debug] no default cache defined: set to /Users/sandeepkunichi/.ivy2/cache
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-shared.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-local.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-main-chain.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] settings loaded (43ms)
-[debug] 	default cache: /Users/sandeepkunichi/.ivy2/cache
-[debug] 	default resolver: default
-[debug] including url: jar:file:/Users/sandeepkunichi/.sbt/boot/scala-2.12.7/org.scala-sbt/sbt/1.2.8/ivy-2.3.0-sbt-cb9cc189e9f3af519f9f102e6c5d446488ff6832.jar!/org/apache/ivy/core/settings/ivysettings-default-chain.xml
-[debug] 	-- 5 resolvers:
-[debug] 	shared [file]
-[debug] 	default [chain] [local, main]
-[debug] 	public [ibiblio]
-[debug] 	main [chain] [shared, public]
-[debug] 	local [file]
-[debug] settings loaded (44ms)
-[debug] settings loaded (46ms)
-[debug] 	default cache: /Users/sandeepkunichi/.ivy2/cache
-[debug] 	default cache: /Users/sandeepkunichi/.ivy2/cache
-[debug] 	default resolver: default
-[debug] 	default resolver: default
-[debug] 	-- 5 resolvers:
-[debug] 	-- 5 resolvers:
-[debug] 	shared [file]
-[debug] 	shared [file]
-[debug] 	default [chain] [local, main]
-[debug] 	default [chain] [local, main]
-[debug] 	public [ibiblio]
-[debug] 	public [ibiblio]
-[debug] 	main [chain] [shared, public]
-[debug] 	main [chain] [shared, public]
-[debug] settings loaded (45ms)
-[debug] 	local [file]
-[debug] 	local [file]
-[debug] 	default cache: /Users/sandeepkunichi/.ivy2/cache
-[debug] 	default resolver: default
-[debug] 	-- 5 resolvers:
-[debug] 	shared [file]
-[debug] 	default [chain] [local, main]
-[debug] 	public [ibiblio]
-[debug] 	main [chain] [shared, public]
-[debug] 	local [file]
-[debug] 	[NOT REQUIRED] org.scala-lang#scala-reflect;2.11.7!scala-reflect.jar(src)
-[debug] settings loaded (48ms)
-[debug] 	default cache: /Users/sandeepkunichi/.ivy2/cache
-[debug] 	default resolver: default
-[debug] 	-- 5 resolvers:
-[debug] 	shared [file]
-[debug] 	default [chain] [local, main]
-[debug] 	public [ibiblio]
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-compiler;2.11.7!scala-compiler.jar(src)
+[debug] 	[NOT REQUIRED] javax.cache#cache-api;1.0.0!cache-api.jar(src)
+[debug] 	[NOT REQUIRED] javax.transaction#transaction-api;1.1!transaction-api.jar(src)
 [debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-parser-combinators_2.11;1.0.4!scala-parser-combinators_2.11.jar(src)
-[debug] 	main [chain] [shared, public]
-[debug] 	local [file]
-[debug] settings loaded (50ms)
-[debug] 	default cache: /Users/sandeepkunichi/.ivy2/cache
-[debug] 	default resolver: default
-[debug] 	-- 5 resolvers:
-[debug] 	shared [file]
-[debug] 	default [chain] [local, main]
-[debug] 	public [ibiblio]
 [debug] 	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.11;1.0.4!scala-xml_2.11.jar(src)
-[debug] 	main [chain] [shared, public]
-[debug] 	local [file]
+[debug] 	[NOT REQUIRED] org.scala-lang#scala-reflect;2.11.7!scala-reflect.jar(src)
 [debug] 	[NOT REQUIRED] jline#jline;2.12.1!jline.jar(src)
-[debug] :: resolution report :: resolve 432ms :: artifacts dl 64ms
+[debug] :: resolution report :: resolve 92ms :: artifacts dl 5ms
 [debug] 	report for default#goodla-ds$sources;0.1 compile produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-compile.xml
 [debug] 	report for default#goodla-ds$sources;0.1 runtime produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-runtime.xml
 [debug] 	report for default#goodla-ds$sources;0.1 test produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-test.xml
 [debug] 	report for default#goodla-ds$sources;0.1 provided produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-provided.xml
 [debug] 	report for default#goodla-ds$sources;0.1 optional produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-optional.xml
+[debug] 	report for default#goodla-ds$sources;0.1 universal produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-universal.xml
+[debug] 	report for default#goodla-ds$sources;0.1 universal-docs produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-universal-docs.xml
+[debug] 	report for default#goodla-ds$sources;0.1 universal-src produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-universal-src.xml
+[debug] 	report for default#goodla-ds$sources;0.1 windows produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-windows.xml
+[debug] 	report for default#goodla-ds$sources;0.1 docker produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-docker.xml
+[debug] 	report for default#goodla-ds$sources;0.1 linux produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-linux.xml
+[debug] 	report for default#goodla-ds$sources;0.1 rpm produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-rpm.xml
+[debug] 	report for default#goodla-ds$sources;0.1 debian produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-debian.xml
 [debug] 	report for default#goodla-ds$sources;0.1 compile-internal produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-compile-internal.xml
 [debug] 	report for default#goodla-ds$sources;0.1 runtime-internal produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-runtime-internal.xml
 [debug] 	report for default#goodla-ds$sources;0.1 test-internal produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-test-internal.xml
 [debug] 	report for default#goodla-ds$sources;0.1 plugin produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-plugin.xml
 [debug] 	report for default#goodla-ds$sources;0.1 pom produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-pom.xml
 [debug] 	report for default#goodla-ds$sources;0.1 scala-tool produced in /Users/sandeepkunichi/Work/Sanderp/project-goodla/goodla-ds/target/scala-2.11/resolution-cache/reports/default-goodla-ds$sources-scala-tool.xml
-[debug] 	resolve done (432ms resolve - 64ms download)
+[debug] 	resolve done (92ms resolve - 5ms download)

@@ -6,8 +6,8 @@
 		module="goodla-ds_2.11"
 		revision="0.1"
 		conf="pom"
-		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20190807222329"/>
+		confs="compile, runtime, test, provided, optional, universal, universal-docs, universal-src, windows, docker, linux, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20190807223921"/>
 	<dependencies>
 	</dependencies>
 </ivy-report>

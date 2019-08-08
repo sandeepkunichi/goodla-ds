@@ -6,16 +6,16 @@
 		module="goodla-ds_2.11"
 		revision="0.1"
 		conf="runtime-internal"
-		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20190807222329"/>
+		confs="compile, runtime, test, provided, optional, universal, universal-docs, universal-src, windows, docker, linux, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20190807223921"/>
 	<dependencies>
 		<module organisation="com.hazelcast" name="hazelcast">
-			<revision name="3.7.2" status="release" pubdate="20161004070557" resolver="public" artresolver="public" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="4">
+			<revision name="3.7.2" status="release" pubdate="20161004070557" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="4">
 				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
-				<metadata-artifact status="successful" details="" size="18540" time="141" location="/Users/sandeepkunichi/.ivy2/cache/com.hazelcast/hazelcast/ivy-3.7.2.xml" searched="true" original-local-location="/Users/sandeepkunichi/.ivy2/cache/com.hazelcast/hazelcast/ivy-3.7.2.xml.original" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/hazelcast/hazelcast/3.7.2/hazelcast-3.7.2.pom"/>
+				<metadata-artifact status="no" details="" size="16279" time="0" location="/Users/sandeepkunichi/.ivy2/cache/com.hazelcast/hazelcast/ivy-3.7.2.xml" searched="false" origin-is-local="false" origin-location="https://repo1.maven.org/maven2/com/hazelcast/hazelcast/3.7.2/hazelcast-3.7.2.pom"/>
 				<caller organisation="default" name="goodla-ds_2.11" conf="compile, runtime-internal, runtime, optional" rev="3.7.2" rev-constraint-default="3.7.2" rev-constraint-dynamic="3.7.2" callerrev="0.1"/>
 				<artifacts>
-					<artifact name="hazelcast" type="jar" ext="jar" status="successful" details="" size="7198634" time="555" location="/Users/sandeepkunichi/.ivy2/cache/com.hazelcast/hazelcast/jars/hazelcast-3.7.2.jar">
+					<artifact name="hazelcast" type="jar" ext="jar" status="no" details="" size="7198634" time="0" location="/Users/sandeepkunichi/.ivy2/cache/com.hazelcast/hazelcast/jars/hazelcast-3.7.2.jar">
 						<origin-location is-local="false" location="https://repo1.maven.org/maven2/com/hazelcast/hazelcast/3.7.2/hazelcast-3.7.2.jar"/>
 					</artifact>
 				</artifacts>

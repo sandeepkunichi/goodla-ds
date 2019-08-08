@@ -6,8 +6,8 @@
 		module="goodla-ds$sources"
 		revision="0.1"
 		conf="provided"
-		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
-		date="20190807223402"/>
+		confs="compile, runtime, test, provided, optional, universal, universal-docs, universal-src, windows, docker, linux, rpm, debian, compile-internal, runtime-internal, test-internal, plugin, pom, scala-tool"
+		date="20190807223922"/>
 	<dependencies>
 	</dependencies>
 </ivy-report>
