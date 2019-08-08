@@ -5,8 +5,11 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 import com.goodla.datastore.json.CacheRequest
+import com.goodla.datastore.json.CacheRequestJsonSupport._
 import com.hazelcast.config._
 import com.hazelcast.Scala._
+
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object DataStoreServer {
 
@@ -32,7 +35,7 @@ object DataStoreServer {
         }
       }
 
-    Http().bindAndHandle(route, "localhost", 443)
+    Http().bindAndHandle(route, "localhost", 8080)
 
   }
 
