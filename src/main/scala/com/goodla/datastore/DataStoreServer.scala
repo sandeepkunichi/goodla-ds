@@ -4,14 +4,16 @@ import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
-import com.goodla.datastore.json.CacheRequest
+import com.goodla.datastore.json.{CacheKey, CacheKeyValue}
 import com.goodla.datastore.json.CacheRequestJsonSupport._
 import com.hazelcast.config._
 import com.hazelcast.Scala._
+import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.{Failure, Success, Try}
 
-object DataStoreServer {
+object DataStoreServer extends LazyLogging {
 
   def main(args: Array[String]) {
 
@@ -24,22 +26,42 @@ object DataStoreServer {
     serialization.Defaults.register(conf.getSerializationConfig)
     val hz = conf.newInstance()
 
-    val route =
-      pathSingleSlash {
+    val putCacheRoute =
+      path("cache") {
         post {
-          entity(as[CacheRequest]) { cacheRequest =>
+          entity(as[CacheKeyValue]) { cacheRequest =>
 
-            hz.getMap(cacheRequest.tableName).put(cacheRequest.cacheKey, cacheRequest.cacheValue)
+            val result = Try(hz.getMap(cacheRequest.tableName).put(cacheRequest.cacheKey, cacheRequest.cacheValue)) match {
+              case Success(_) => s"Added: $cacheRequest"
+              case Failure(exception) => s"Error while adding ${exception.getMessage}"
+            }
 
-            val storedValue = hz.getMap(cacheRequest.tableName).get(cacheRequest.cacheKey).asInstanceOf[String]
-            complete(storedValue)
+            complete(result)
 
           }
         }
       }
 
-    Http().bindAndHandle(route, "0.0.0.0", port)
+    val getCacheRoute =
+      path("cache") {
+        get {
+          parameters('tableName.as[String], 'key.as[String]).as(CacheKey) { cacheKey =>
+
+            val result = Try(hz.getMap(cacheKey.tableName).get(cacheKey.cacheKey).toString) match {
+              case Success(cacheValue) => s"Value found: $cacheValue"
+              case Failure(_) => s"Value not found for $cacheKey"
+            }
+
+            complete(result)
+
+          }
+        }
+      }
+
+
+    Http().bindAndHandle(putCacheRoute ~ getCacheRoute, "0.0.0.0", port)
 
   }
+
 
 }
