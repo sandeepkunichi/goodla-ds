@@ -36,6 +36,8 @@ object DataStoreServer extends LazyLogging {
               case Failure(exception) => s"Error while adding ${exception.getMessage}"
             }
 
+            logger.info(result)
+
             complete(result)
 
           }
@@ -51,6 +53,8 @@ object DataStoreServer extends LazyLogging {
               case Success(cacheValue) => s"Value found: $cacheValue"
               case Failure(_) => s"Value not found for $cacheKey"
             }
+
+            logger.info(result)
 
             complete(result)
 
