@@ -15,6 +15,8 @@ object DataStoreServer {
 
   def main(args: Array[String]) {
 
+    val port: Int = sys.env.getOrElse("PORT", "8080").toInt
+
     implicit val actorSystem: ActorSystem = ActorSystem("system")
     implicit val actorMaterializer: ActorMaterializer = ActorMaterializer()
 
@@ -36,7 +38,7 @@ object DataStoreServer {
         }
       }
 
-    Http().bindAndHandle(route, "localhost", 80)
+    Http().bindAndHandle(route, "0.0.0.0", port)
 
   }
 
