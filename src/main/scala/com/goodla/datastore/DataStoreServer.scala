@@ -36,7 +36,7 @@ object DataStoreServer {
         }
       }
 
-    Http().bindAndHandle(route, "localhost", 443)
+    Http().bindAndHandle(route, "https://goodla-ds.herokuapp.com", 443)
 
   }
 
