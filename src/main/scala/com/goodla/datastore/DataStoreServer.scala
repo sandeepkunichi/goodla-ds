@@ -29,13 +29,14 @@ object DataStoreServer {
 
             hz.getMap(cacheRequest.tableName).put(cacheRequest.cacheKey, cacheRequest.cacheValue)
 
-            complete(hz.getMap(cacheRequest.tableName).get(cacheRequest.cacheKey))
+            val storedValue = hz.getMap(cacheRequest.tableName).get(cacheRequest.cacheKey).asInstanceOf[String]
+            complete(storedValue)
 
           }
         }
       }
 
-    Http().bindAndHandle(route, "localhost", 8080)
+    Http().bindAndHandle(route, "localhost", 443)
 
   }
 
