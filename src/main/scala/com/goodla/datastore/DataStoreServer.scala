@@ -62,8 +62,26 @@ object DataStoreServer extends LazyLogging {
         }
       }
 
+    val flushCacheRoute =
+      path("cache") {
+        delete {
+          parameters('tableName.as[String]) { cacheTable =>
 
-    Http().bindAndHandle(putCacheRoute ~ getCacheRoute, "0.0.0.0", port)
+            val result = Try(hz.getMap(cacheTable).clear()) match {
+              case Success(_) => s"Flushed cache: $cacheTable"
+              case Failure(exception) => s"Failed to flush $cacheTable. Reason: ${exception.getMessage}"
+            }
+
+            logger.info(result)
+
+            complete(result)
+
+          }
+        }
+      }
+
+
+    Http().bindAndHandle(putCacheRoute ~ getCacheRoute ~ flushCacheRoute, "0.0.0.0", port)
 
   }
 
