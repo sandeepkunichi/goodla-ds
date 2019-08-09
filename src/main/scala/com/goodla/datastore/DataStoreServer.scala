@@ -12,6 +12,7 @@ import com.hazelcast.Scala._
 import com.hazelcast.core.HazelcastInstance
 import com.typesafe.scalalogging.LazyLogging
 
+import scala.collection.JavaConversions._
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.{Failure, Success, Try}
@@ -49,11 +50,29 @@ trait GoodlaDataStoreService extends LazyLogging {
         parameters('tableName.as[String], 'key.as[String]).as(CacheKey) { cacheKey =>
 
           val result = Try(hz.getMap(cacheKey.tableName).get(cacheKey.cacheKey).toString) match {
-            case Success(cacheValue) => s"Value found: $cacheValue"
-            case Failure(_) => s"Value not found for $cacheKey"
+            case Success(cacheValue) => CacheKeyValue(cacheKey.tableName, cacheKey.cacheKey, cacheValue)
+            case Failure(_) => CacheKeyValue("", "", "")
           }
 
-          logger.info(result)
+          logger.info(s"Got value: $result")
+
+          complete(result)
+
+        }
+      }
+    }
+
+  val getAllCacheRoute: Route =
+    path("cache") {
+      get {
+        parameters('tableName.as[String]) { cacheTable =>
+
+          val result: Seq[CacheKeyValue] = Try(hz.getMap(cacheTable)) match {
+            case Success(cacheMap) => (for { entry <- cacheMap.entrySet } yield { CacheKeyValue(cacheTable, entry.getKey, entry.getValue)}).toSeq
+            case Failure(_) => Seq.empty
+          }
+
+          logger.info(s"Getting all values")
 
           complete(result)
 
@@ -82,10 +101,10 @@ trait GoodlaDataStoreService extends LazyLogging {
 }
 
 class GoodlaDataStoreServer(implicit val system:ActorSystem,
-                            implicit  val materializer:ActorMaterializer) extends GoodlaDataStoreService {
+                            implicit val materializer:ActorMaterializer) extends GoodlaDataStoreService {
 
   def startServer(address: String, port: Int): Future[Http.ServerBinding] = {
-    Http().bindAndHandle(putCacheRoute ~ getCacheRoute ~ flushCacheRoute, address, port)
+    Http().bindAndHandle(putCacheRoute ~ getCacheRoute ~ getAllCacheRoute ~ flushCacheRoute, address, port)
   }
 
 }

@@ -40,17 +40,37 @@ class GoodlaDataStoreSpec extends WordSpec with Matchers with ScalatestRouteTest
 
       getRequest ~> getCacheRoute ~> check {
         status.isSuccess() shouldEqual true
-        entityAs[String] should ===("""Value found: test_value""")
+        entityAs[String] should ===("""{
+                                      |  "tableName": "goodla-ds-test",
+                                      |  "cacheKey": "test_key",
+                                      |  "cacheValue": "test_value"
+                                      |}""".stripMargin)
+      }
+    }
+
+    "Getting all from /cache should get from cache" in {
+
+      val getAllRequest = HttpRequest(
+        HttpMethods.GET,
+        uri = "/cache?tableName=goodla-ds-test")
+
+      getAllRequest ~> getAllCacheRoute ~> check {
+        status.isSuccess() shouldEqual true
+        entityAs[String] should ===("""[{
+                                      |  "tableName": "goodla-ds-test",
+                                      |  "cacheKey": "test_key",
+                                      |  "cacheValue": "test_value"
+                                      |}]""".stripMargin)
       }
     }
 
     "Flushing from /cache should clear the cache" in {
 
-      val getRequest = HttpRequest(
+      val flushRequest = HttpRequest(
         HttpMethods.DELETE,
         uri = "/cache?tableName=goodla-ds-test")
 
-      getRequest ~> flushCacheRoute ~> check {
+      flushRequest ~> flushCacheRoute ~> check {
         status.isSuccess() shouldEqual true
         entityAs[String] should ===("""Flushed cache: goodla-ds-test""")
       }
