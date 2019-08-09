@@ -32,6 +32,28 @@ class GoodlaDataStoreSpec extends WordSpec with Matchers with ScalatestRouteTest
       }
     }
 
+    "Posting all to /cache should add to cache" in {
+
+      val jsonRequest = ByteString(
+        s"""
+           |[{
+           |	"tableName": "goodla-ds-test",
+           |	"cacheKey": "test_key",
+           |	"cacheValue": "test_value"
+           |}]
+        """.stripMargin)
+
+      val postAllRequest = HttpRequest(
+        HttpMethods.POST,
+        uri = "/cache",
+        entity = HttpEntity(MediaTypes.`application/json`, jsonRequest))
+
+      postAllRequest ~> putAllCacheRoute ~> check {
+        status.isSuccess() shouldEqual true
+        entityAs[String] should ===("""Added: List(CacheKeyValue(goodla-ds-test,test_key,test_value))""")
+      }
+    }
+
     "Getting from /cache should get from cache" in {
 
       val getRequest = HttpRequest(

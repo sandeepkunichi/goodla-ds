@@ -44,6 +44,28 @@ trait GoodlaDataStoreService extends LazyLogging {
       }
     }
 
+  val putAllCacheRoute: Route =
+    path("cache") {
+      post {
+        entity(as[Seq[CacheKeyValue]]) { cacheRequests =>
+
+          val result = Try({
+            cacheRequests.map { cacheRequest =>
+              hz.getMap(cacheRequest.tableName).put(cacheRequest.cacheKey, cacheRequest.cacheValue)
+            }
+          }) match {
+            case Success(_) => s"Added: $cacheRequests"
+            case Failure(exception) => s"Error while adding ${exception.getMessage}"
+          }
+
+          logger.info(result)
+
+          complete(result)
+
+        }
+      }
+    }
+
   val getCacheRoute: Route =
     path("cache") {
       get {
@@ -104,7 +126,7 @@ class GoodlaDataStoreServer(implicit val system:ActorSystem,
                             implicit val materializer:ActorMaterializer) extends GoodlaDataStoreService {
 
   def startServer(address: String, port: Int): Future[Http.ServerBinding] = {
-    Http().bindAndHandle(putCacheRoute ~ getCacheRoute ~ getAllCacheRoute ~ flushCacheRoute, address, port)
+    Http().bindAndHandle(putCacheRoute ~ putAllCacheRoute ~ getCacheRoute ~ getAllCacheRoute ~ flushCacheRoute, address, port)
   }
 
 }
