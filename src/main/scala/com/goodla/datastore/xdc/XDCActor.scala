@@ -6,8 +6,8 @@ import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import akka.http.scaladsl.marshalling.Marshal
 import akka.http.scaladsl.model.{HttpMethods, HttpRequest, RequestEntity}
 import akka.stream.ActorMaterializer
-import com.goodla.datastore.json.CacheKeyValue
-import com.goodla.datastore.json.CacheRequestJsonSupport._
+import com.goodla.datastore.data.CacheKeyValue
+import com.goodla.datastore.data.json.CacheDataJsonSupport._
 import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.ExecutionContextExecutor
@@ -25,6 +25,7 @@ class XDCActor extends Actor with LazyLogging with SprayJsonSupport {
   val http = Http(system)
 
   val xdcConfig = new XDCConfig
+  val otherNodes: Seq[CacheNode] = xdcConfig.getOtherNodes
 
   override def receive: PartialFunction[Any, Unit] = {
     case CacheKeyValueMessage(cacheKeyValue) => postCacheKeyValue(cacheKeyValue)
@@ -34,7 +35,7 @@ class XDCActor extends Actor with LazyLogging with SprayJsonSupport {
 
   def postCacheKeyValue(cacheKeyValue: CacheKeyValue): Unit = {
     for {
-      futureResponse <- xdcConfig.getOtherNodes.map { node =>
+      futureResponse <- otherNodes.map { node =>
         Marshal(cacheKeyValue).to[RequestEntity] flatMap { entity =>
           val request = HttpRequest(method = HttpMethods.POST, uri = s"${node.uri}/cache", entity = entity)
           http.singleRequest(request)

@@ -5,8 +5,8 @@ import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import akka.stream.ActorMaterializer
-import com.goodla.datastore.json.{CacheKey, CacheKeyValue}
-import com.goodla.datastore.json.CacheRequestJsonSupport._
+import com.goodla.datastore.data.{CacheKey, CacheKeyValue}
+import com.goodla.datastore.data.json.CacheDataJsonSupport._
 import com.goodla.datastore.xdc.{CacheKeyValueMessage, CacheKeyValuesMessage, XDCActor}
 import com.hazelcast.config._
 import com.hazelcast.Scala._
