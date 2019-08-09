@@ -1,12 +1,13 @@
 package com.goodla.datastore
 
-import akka.actor.ActorSystem
+import akka.actor.{ActorRef, ActorSystem, Props}
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import akka.stream.ActorMaterializer
 import com.goodla.datastore.json.{CacheKey, CacheKeyValue}
 import com.goodla.datastore.json.CacheRequestJsonSupport._
+import com.goodla.datastore.xdc.{CacheKeyValueMessage, CacheKeyValuesMessage, XDCActor}
 import com.hazelcast.config._
 import com.hazelcast.Scala._
 import com.hazelcast.core.HazelcastInstance
@@ -20,6 +21,12 @@ import scala.util.{Failure, Success, Try}
 trait GoodlaDataStoreService extends LazyLogging {
   implicit val system: ActorSystem
   implicit val materializer: ActorMaterializer
+
+  val xdcActor: ActorRef = system.actorOf(
+    Props(new XDCActor()),
+    name = "xdcActor"
+  )
+
 
 
   val conf: Config = new Config("goodla-ds")
@@ -37,6 +44,8 @@ trait GoodlaDataStoreService extends LazyLogging {
           }
 
           logger.info(result)
+
+          xdcActor ! CacheKeyValueMessage(cacheRequest)
 
           complete(result)
 
@@ -59,6 +68,8 @@ trait GoodlaDataStoreService extends LazyLogging {
           }
 
           logger.info(result)
+
+          xdcActor ! CacheKeyValuesMessage(cacheRequests)
 
           complete(result)
 
