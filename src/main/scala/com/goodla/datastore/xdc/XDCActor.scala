@@ -7,7 +7,7 @@ import akka.stream.scaladsl.SourceQueueWithComplete
 import com.goodla.datastore.data.CacheKeyValue
 import com.typesafe.scalalogging.LazyLogging
 
-import scala.concurrent.ExecutionContextExecutor
+import scala.concurrent.{ExecutionContextExecutor, Future}
 
 case class CacheKeyValueMessage(cacheKeyValue: CacheKeyValue)
 case class CacheKeyValuesMessage(cacheKeyValues: Seq[CacheKeyValue])
@@ -21,11 +21,25 @@ class XDCActor extends Actor with LazyLogging with SprayJsonSupport {
   val queue: SourceQueueWithComplete[CacheQueueElement] = GoodlaDsQueue.getQueue
 
   override def receive: PartialFunction[Any, Unit] = {
-    case CacheKeyValueMessage(cacheKeyValue) => queue offer CacheQueueElement(cacheKeyValue)
-    case CacheKeyValuesMessage(cacheKeyValues) => cacheKeyValues.map { cacheKeyValue =>
-      queue offer CacheQueueElement(cacheKeyValue)
-    }
+    case CacheKeyValueMessage(cacheKeyValue) => offerToQueue(Seq(CacheQueueElement(cacheKeyValue)))
+    case CacheKeyValuesMessage(cacheKeyValues) => offerToQueue(cacheKeyValues.map { cacheKeyValue =>
+      CacheQueueElement(cacheKeyValue)
+    })
     case _ => logger.error(s"Received unknown message")
+  }
+
+  def offerToQueue(cacheQueueElements: Seq[CacheQueueElement]): Future[Unit] = {
+    cacheQueueElements.filter { element =>
+      // Filter out internal events
+      element.cacheKeyValue.external
+    }.map { element =>
+      // Convert external to internal events
+      CacheQueueElement(element.cacheKeyValue.copyAsInternal)
+    }.map { element =>
+      // Offer internal events
+      queue offer element
+    }
+    Future.successful()
   }
 
 

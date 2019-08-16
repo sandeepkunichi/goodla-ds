@@ -4,6 +4,7 @@ echo "Deploying Goodla DS to all nodes"
 
 echo "Deploying node 1"
 
+> src/main/resources/application.conf
 echo "include \"node_1.conf\"" >> src/main/resources/application.conf
 
 heroku git:remote -a goodla-ds-1
@@ -16,6 +17,7 @@ git push heroku master
 
 echo "Deploying node 2"
 
+> src/main/resources/application.conf
 echo "include \"node_2.conf\"" >> src/main/resources/application.conf
 
 heroku git:remote -a goodla-ds-2
@@ -29,7 +31,8 @@ git push heroku master
 
 echo "Deploying node 3"
 
-echo "include \"node_1.conf\"" >> src/main/resources/application.conf
+> src/main/resources/application.conf
+echo "include \"node_3.conf\"" >> src/main/resources/application.conf
 
 heroku git:remote -a goodla-ds-3
 
