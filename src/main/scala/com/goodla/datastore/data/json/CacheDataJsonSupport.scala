@@ -5,5 +5,5 @@ import com.goodla.datastore.data.CacheKeyValue
 import spray.json.{DefaultJsonProtocol, RootJsonFormat}
 
 object CacheDataJsonSupport extends DefaultJsonProtocol with SprayJsonSupport {
-  implicit val cacheKeyValueFormats: RootJsonFormat[CacheKeyValue] = jsonFormat3(CacheKeyValue)
+  implicit val cacheKeyValueFormats: RootJsonFormat[CacheKeyValue] = jsonFormat4(CacheKeyValue)
 }

@@ -83,8 +83,8 @@ trait GoodlaDataStoreService extends LazyLogging {
         parameters('tableName.as[String], 'key.as[String]).as(CacheKey) { cacheKey =>
 
           val result = Try(hz.getMap(cacheKey.tableName).get(cacheKey.cacheKey).toString) match {
-            case Success(cacheValue) => CacheKeyValue(cacheKey.tableName, cacheKey.cacheKey, cacheValue)
-            case Failure(_) => CacheKeyValue("", "", "")
+            case Success(cacheValue) => CacheKeyValue(cacheKey.tableName, cacheKey.cacheKey, cacheValue, external = true)
+            case Failure(_) => CacheKeyValue("", "", "", external = true)
           }
 
           logger.info(s"Got value: $result")
@@ -101,7 +101,7 @@ trait GoodlaDataStoreService extends LazyLogging {
         parameters('tableName.as[String]) { cacheTable =>
 
           val result: Seq[CacheKeyValue] = Try(hz.getMap(cacheTable)) match {
-            case Success(cacheMap) => (for { entry <- cacheMap.entrySet } yield { CacheKeyValue(cacheTable, entry.getKey, entry.getValue)}).toSeq
+            case Success(cacheMap) => (for { entry <- cacheMap.entrySet } yield { CacheKeyValue(cacheTable, entry.getKey, entry.getValue, external = true)}).toSeq
             case Failure(_) => Seq.empty
           }
 
